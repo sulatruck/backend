@@ -1,0 +1,37 @@
+{
+  "name": "ccr",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "scripts": {
+    "build:server": "tsc",
+    "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
+    "dev:migrate": "ts-node src/database/index.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/graphql-iso-date": "^3.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.5",
+    "ts-node": "^8.10.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.14.4",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.2.0",
+    "global": "^4.4.0",
+    "graphql": "^15.1.0",
+    "graphql-iso-date": "^3.6.1",
+    "pg": "^8.2.1",
+    "typeorm": "^0.2.25"
+  }
+}
