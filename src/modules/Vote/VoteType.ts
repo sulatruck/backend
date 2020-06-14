@@ -8,10 +8,13 @@ export default new GraphQLObjectType({
       type: GraphQLNonNull(GraphQLString),
     },
     feedback_id: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
     user_id: {
       type: GraphQLNonNull(GraphQLString),
+    },
+    rating_id: {
+      type: GraphQLString,
     },
     created_at: {
       type: GraphQLNonNull(GraphQLDateTime),

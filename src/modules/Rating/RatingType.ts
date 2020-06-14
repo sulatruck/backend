@@ -3,6 +3,7 @@ import {
   GraphQLNonNull,
   GraphQLBoolean,
   GraphQLString,
+  GraphQLInt,
 } from 'graphql';
 import { GraphQLDateTime } from 'graphql-iso-date';
 
@@ -12,8 +13,8 @@ export default new GraphQLObjectType({
     id: {
       type: GraphQLNonNull(GraphQLString),
     },
-    value: {
-      type: GraphQLNonNull(GraphQLBoolean),
+    stars: {
+      type: GraphQLNonNull(GraphQLInt),
     },
     comment: {
       type: GraphQLString,

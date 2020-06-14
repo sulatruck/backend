@@ -10,6 +10,7 @@ import {
 
 import Feedback from '../Feedback/FeedbackModel';
 import User from '../User/UserModel';
+import Rating from '../Rating/RatingModel';
 
 @Entity('votes')
 class Vote {
@@ -29,6 +30,13 @@ class Vote {
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @Column()
+  rating_id: string;
+
+  @ManyToOne(() => Rating)
+  @JoinColumn({ name: 'rating_id' })
+  rating: Rating;
 
   @CreateDateColumn()
   created_at: Date;

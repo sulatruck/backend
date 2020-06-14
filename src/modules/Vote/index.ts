@@ -22,6 +22,9 @@ export const mutations = {
             feedback_id: {
               type: GraphQLString,
             },
+            rating_id: {
+              type: GraphQLString,
+            },
             user_id: {
               type: GraphQLString,
             },

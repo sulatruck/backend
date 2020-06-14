@@ -1,0 +1,125 @@
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+}
+
+# Exposes a URL that specifies the behaviour of this scalar.
+directive @specifiedBy(
+  # The URL that specifies the behaviour of this scalar.
+  url: String!
+) on SCALAR
+input AuthInput {
+  email: String
+  password: String
+}
+
+# A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+# `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+# 8601 standard for representation of dates and times using the Gregorian calendar.
+scalar DateTime
+
+input FeedbackInput {
+  subject: String
+  body: String
+  rating: Boolean
+  anonymous: Boolean
+  author_id: String
+}
+
+type FeedbackType {
+  id: String!
+  subject: String!
+  body: String!
+  like_count: Int!
+  rating: Boolean!
+  anonymous: Boolean!
+  author_id: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input RatingInput {
+  value: Boolean
+  comment: String
+  anonymous: Boolean
+  user_id: String
+  service_id: String
+  stars: Int
+}
+
+type RatingType {
+  id: String!
+  stars: Int!
+  comment: String
+  anonymous: Boolean!
+  user_id: String!
+  service_id: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type RootMutationType {
+  saveUser(input: UserInput): UserType
+  saveService(input: ServiceInput): ServiceType
+  saveRating(input: RatingInput): RatingType
+  saveFeedback(input: FeedbackInput): FeedbackType
+  saveVote(input: VoteInput): VoteType
+}
+
+type RootQueryType {
+  getUsers: [UserType]
+  login(input: AuthInput): UserType
+  getService: [ServiceType]
+  getRating: [RatingType]
+  getFeedback: [FeedbackType]
+  getVotes: [VoteType]
+}
+
+input ServiceInput {
+  name: String!
+  address: String
+  latitude: Float
+  longitude: Float
+}
+
+type ServiceType {
+  id: String!
+  name: String
+  address: String!
+  average_rating: Float!
+  latitude: Float!
+  longitude: Float!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input UserInput {
+  name: String
+  email: String
+  password: String
+}
+
+type UserType {
+  id: String!
+  name: String!
+  email: String!
+  password: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input VoteInput {
+  feedback_id: String
+  rating_id: String
+  user_id: String
+}
+
+type VoteType {
+  id: String!
+  feedback_id: String
+  user_id: String!
+  rating_id: String
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+

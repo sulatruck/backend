@@ -1,12 +1,31 @@
 import { GraphQLString, GraphQLList, GraphQLInputObjectType } from 'graphql';
 
 import UserType from './UserType';
-import { getUsers, saveUser } from './UserLoader';
+import { getUsers, saveUser, login } from './UserLoader';
 
 export const queries = {
   getUsers: {
     type: GraphQLList(UserType),
     resolve: getUsers,
+  },
+  login: {
+    type: UserType,
+    resolve: login,
+    args: {
+      input: {
+        type: new GraphQLInputObjectType({
+          name: 'AuthInput',
+          fields: {
+            email: {
+              type: GraphQLString,
+            },
+            password: {
+              type: GraphQLString,
+            },
+          },
+        }),
+      },
+    },
   },
 };
 

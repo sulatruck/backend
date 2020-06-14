@@ -3,6 +3,7 @@ import {
   GraphQLList,
   GraphQLInputObjectType,
   GraphQLBoolean,
+  GraphQLInt,
 } from 'graphql';
 
 import RatingType from './RatingType';
@@ -38,6 +39,9 @@ export const mutations = {
             },
             service_id: {
               type: GraphQLString,
+            },
+            stars: {
+              type: GraphQLInt,
             },
           },
         }),

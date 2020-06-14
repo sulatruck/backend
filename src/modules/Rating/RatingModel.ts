@@ -17,7 +17,7 @@ class Rating {
   id: string;
 
   @Column()
-  value: boolean;
+  stars: number;
 
   @Column()
   comment: string;
